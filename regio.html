@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script defer src="https://unpkg.com/alpinejs@3.5.0/dist/cdn.min.js"></script>
+</head>
+<body>
+
+    <h1 id="regioTitle"></h1>
+    <p id="regioDescription"></p>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Extract the regionaam parameter from the URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const regionaam = urlParams.get('regionaam');
+
+            // Fetch data for the specific regionaam from the API
+            fetch(`https://api-dierentuin-michielkuyken.cloud.okteto.net/regios/${regionaam}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Update the content of the page with the fetched data
+                    document.getElementById('regioTitle').textContent = data.regionaam;
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        });
+    </script>
+
+</body>
+</html>

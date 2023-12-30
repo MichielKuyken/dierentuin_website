@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+    <script defer src="https://unpkg.com/alpinejs@3.5.0/dist/cdn.min.js"></script>
 </head>
 <body>
   
@@ -56,7 +56,7 @@
         <ul>
             <template x-for="regio in responsedata" :key="regio.id">
                 <li>
-                    <strong x-text="regio"></strong>
+                    <a x-bind:href="`/regio.html?regionaam=${regio.regionaam}`"><strong x-text="regio.regionaam"></strong></a>
                 </li>
             </template>
             <template x-if="!responsedata">
