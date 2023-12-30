@@ -59,9 +59,9 @@
                 .catch(error => console.error('Error fetching data:', error));
         });
         
-        function fetchDataForDieren(regio_id) {
+        function fetchDataForDieren() {
             // Fetch data for the specific regio_id from the API
-            fetch(`https://api-dierentuin-michielkuyken.cloud.okteto.net/dieren/${regio_id}`)
+            fetch(`https://api-dierentuin-michielkuyken.cloud.okteto.net/dieren/${data.id}`)
                 .then(response => response.json())
                 .then(data => {
                     // Update the content of the page with the fetched data
@@ -75,6 +75,7 @@
     <div x-data="{
         responsedata: null,
         async getData() {
+            await fetchDataForDieren()
         }
     }" x-init="getData">
         <h2>Dieren</h2>
