@@ -18,30 +18,32 @@
     </button>
   </div>
 </nav>
-    <h1 class="my-3 ms-5">Welkom in Planckendael</h1>
-    <div class="row">
-        <img class="col ms-5" src="./images/map_planckendael.jpg" alt="plackendael">
-        <div class="col" x-data="{
-        responsedata: null,
-        async getData() {
-            this.responsedata = await (await fetch('https://api-dierentuin-michielkuyken.cloud.okteto.net/regios/')).json();
-            console.log(this.responsedata);
-        }
-    }" x-init="getData">
-        <h2>Regios</h2>
-        <ul>
-            <template x-for="regio in responsedata" :key="regio.id">
-                <li>
-                    <a x-bind:href="`/regio.html?regionaam=${regio.regionaam}`"><strong x-text="regio.regionaam"></strong></a>
-                </li>
-            </template>
-            <template x-if="!responsedata">
-                <li>No regio found</li>
-            </template>
-        </ul>
+   <div class="ms-5">
+        <h1 class="my-3">Welkom in Planckendael</h1>
+        <div class="row">
+            <img class="col" src="./images/map_planckendael.jpg" alt="plackendael">
+            <div class="col" x-data="{
+            responsedata: null,
+            async getData() {
+                this.responsedata = await (await fetch('https://api-dierentuin-michielkuyken.cloud.okteto.net/regios/')).json();
+                console.log(this.responsedata);
+            }
+        }" x-init="getData">
+            <h2>Regios</h2>
+            <ul>
+                <template x-for="regio in responsedata" :key="regio.id">
+                    <li>
+                        <a x-bind:href="`/regio.html?regionaam=${regio.regionaam}`"><strong x-text="regio.regionaam"></strong></a>
+                    </li>
+                </template>
+                <template x-if="!responsedata">
+                    <li>No regio found</li>
+                </template>
+            </ul>
+        </div>
+        </div> 
+        <h3>Toevoegingen:</h3>
+        <a href="toevoegingen.html">toevoegingen</a>
     </div>
-    </div> 
-    <h3>Toevoegingen:</h3>
-    <a href="toevoegingen.html">toevoegingen</a>
 </body>
 </html>
