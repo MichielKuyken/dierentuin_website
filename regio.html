@@ -8,8 +8,6 @@
 <body>
 
     <h1 id="regioTitle"></h1>
-    <p id="regioDescription"></p>
-
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Extract the regionaam parameter from the URL
@@ -22,10 +20,30 @@
                 .then(data => {
                     // Update the content of the page with the fetched data
                     document.getElementById('regioTitle').textContent = data.regionaam;
+                    document.getElementById('regio_id').textContent = data.id;
                 })
                 .catch(error => console.error('Error fetching data:', error));
         });
     </script>
+    <div x-data="{
+        responsedata: null,
+        async getData() {
+            this.responsedata = await (await fetch('https://api-dierentuin-michielkuyken.cloud.okteto.net/dier/{regio_id}')).json();
+            console.log(this.responsedata);
+        }
+    }" x-init="getData">
+        <h2>Regios</h2>
+        <ul>
+            <template x-for="dier in responsedata" :key="dier.id">
+                <li>
+                    <strong x-text="dier.diersoort"></strong>
+                </li>
+            </template>
+            <template x-if="!responsedata">
+                <li>No dier found</li>
+            </template>
+        </ul>
+    </div>
 
 </body>
 </html>
