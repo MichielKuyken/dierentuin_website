@@ -28,45 +28,24 @@
 
                 // Update the content of the page with the fetched data
                 document.getElementById('regioTitle').textContent = data.regionaam;
-                document.getElementById('regio_id').textContent = data.id;
-
-                // Call getData with the regio_id
-                app.getData(data.id);
+                document.getElementById('regio_id').textContent = data.id
             } catch (error) {
                 console.error('Error during initialization:', error);
             }
+            
         });
 
-        function fetchDataForDieren(regio_id) {
-            // Fetch data for the specific regio_id from the API
-            fetch(`https://api-dierentuin-michielkuyken.cloud.okteto.net/dieren/${regio_id}`)
-                .then(response => response.json())
-                .then(data => {
-                    // Update the content of the page with the fetched data
-                    // (You might want to update the content differently based on your data structure)
-                    console.log('Fetched dieren data:', data);
-                    // Set the fetched data to the responsedata variable
-                    app.responsedata = data;
-                })
-                .catch(error => console.error('Error fetching dieren data:', error));
-        }
     </script>
     <div x-data="{
         responsedata: null,
         async getData(regio_id) {
-            try {
-                // Set regio_id to app.regio_id for later use
-                app.regio_id = regio_id;
-                // Call fetchDataForDieren to fetch data for dieren using regio_id
-                await fetchDataForDieren(regio_id);
-            } catch (error) {
-                console.error('Error during getData:', error);
-            }
+            this.responsedata = await (await fetch('https://api-dierentuin-michielkuyken.cloud.okteto.net/dier/${regio_id}')).json();
+            console.log(this.responsedata);
         }
     }" x-init="getData">
         <h2>Dieren</h2>
         <ul>
-            <template x-for="dier in responsedata" :key="dier.id">
+            <template x-for="dier in responsdata" :key="dier.id">
                 <li>
                     <strong x-text="dier.diersoort"></strong>
                 </li>
