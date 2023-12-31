@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #D2B48C;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Pacifico', cursive;
+}
+
+h1{
+    font-size: 60px;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+ul, .navitem{
+    list-style-type: none;
+}
+
+.card{
+    background-color: #228B22;
+}
+
+.navbar{
+    background-color: #8B4513;
+}

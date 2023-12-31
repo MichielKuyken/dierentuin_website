@@ -32,24 +32,21 @@
   </div>
 </nav>
    <div class="ms-5">
-        <h1 class="mt-3 mb-5 text-center">Welkom in Planckendael</h1>
-        <div class="row">
-            <img class="col" src="./images/map_planckendael.jpg" alt="plackendael">
+        <h1 class="mt-3 mb-5 text-center">Managers</h1>
             <div class="col" x-data="{
             responsedata: null,
             async getData() {
-                this.responsedata = await (await fetch('https://api-dierentuin-michielkuyken.cloud.okteto.net/regios/')).json();
+                this.responsedata = await (await fetch('https://api-dierentuin-michielkuyken.cloud.okteto.net/managers/')).json();
                 console.log(this.responsedata);
             }
         }" x-init="getData">
-            <h2>Regios</h2>
             <ul class="row">
-                <template x-for="regio in responsedata" :key="regio.id">
-                    <li class="col-6 my-3">
+                <template x-for="manager in responsedata" :key="manager.id">
+                    <li class="col-4 my-3">
                        <div class="card h-100" style="width: 18rem;">
-                          <img x-bind:src="regio.foto" class="card-img-top p-3" alt="regio">
+                          <img x-bind:src="manager.foto" class="card-img-top p-3" alt="manager">
                           <div class="card-body text-center">
-                            <a x-bind:href="`/regio.html?regionaam=${regio.regionaam}`"><strong x-text="regio.regionaam"></strong></a>
+                            <a x-bind:href="`/manager.html?manager_nummer=${manager.managernummer}`"><strong x-text="manager.voornaam"></strong> <strong x-text="manager.achternaam"></strong></a>
                           </div>
                         </div>
                     </li>
@@ -59,7 +56,6 @@
                 </template>
             </ul>
         </div>
-        </div> 
-    </div>
+    </div> 
 </body>
 </html>

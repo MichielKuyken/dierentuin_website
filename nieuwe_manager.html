@@ -5,16 +5,62 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="mutual.css">
     <script defer src="https://unpkg.com/alpinejs@3.5.0/dist/cdn.min.js"></script>
 </head>
-<body class="ms-3">
-     <nav class="navbar navbar-expand-lg bg-body-tertiary">
+<body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="./index.html">Home</a>
+    <a class="navbar-brand" href="index.html">Home</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="dieren.html">Dieren</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="managers.html">Managers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="toevoegingen.html">Toevoegingen</a>
+            </li>
+        </ul>
+    </div>
   </div>
 </nav>
+<div class="text-center">
+    <h1>Nieuwe manager</h1>
+    <div x-data="{
+        responsedata: null,
+        voornaam: null,
+        achternaam: null,
+        manager_nummer
+        async callmethod1() {
+            this.responsedata = await (await fetch('https://api-dierentuin-michielkuyken.cloud.okteto.net/managers/', 
+            {
+                method: 'POST',
+                body: JSON.stringify({
+                    title: this.posttitle,
+                    body: 'bar',
+                    userId: 1,
+                }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+            })).json();
+
+            console.log(this.responsedata);
+        },
+    }">
+       <div class="row">
+        <p class="col-4">Voornaam: <input type="text" x-model="voornaam"></p>
+        <p class="col-4">Achternaam: <input type="text" x-model="achternaam"></p>
+        <p class="col-4">Manager nummer: <input type="text" x-model="manager_nummer"></p>
+        </div>
+        <a href="managers.html"><button x-on:click="callmethod1">Submit manager</button></a>
+    </div>
+</div>
 </body>
 </html>
