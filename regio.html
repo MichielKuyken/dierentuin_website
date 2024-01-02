@@ -30,7 +30,7 @@
     </div>
   </div>
 </nav>
-<div class="container">
+<div class="container text-center">
     <h1 id="regioTitle"></h1>
     <img id="foto" alt="regio">
     <script>
@@ -50,29 +50,30 @@
                 document.getElementById('foto').src = data.foto;
                 regio_id = data.id;
                 document.getElementById('regio_id').textContent = data.id;
+                
+                // Fetch data for animals using regio_id
+                const animalsResponse = await fetch(`https://api-dierentuin-michielkuyken.cloud.okteto.net/dier/${regio_id}`);
+                const animalsData = await animalsResponse.json();
+
+                // Get the <ul> element
+                const ulElement = document.getElementById('animals_list');
+
+                // Populate the <ul> element with animalsData
+                animalsData.forEach(animal => {
+                    const liElement = document.createElement('li');
+                    liElement.textContent = `${animal.diersoort} - Hoeveelheid: ${animal.hoeveelheid}`;
+                    ulElement.appendChild(liElement);
+                });
             } catch (error) {
                 console.error('Error during initialization:', error);
             }
             
         });
+        
     </script>
-    <div x-data="{
-        responsedata: null,
-        async getData(regio_id) {
-            this.responsedata = await (await fetch('https://api-dierentuin-michielkuyken.cloud.okteto.net/dier/${regio_id}')).json();
-            console.log(this.responsedata);
-        }
-    }" x-init="getData">
+    <div>
         <h2>Dieren</h2>
-        <ul>
-            <template x-for="dier in responsdata" :key="dier.id">
-                <li>
-                    <strong x-text="dier.diersoort"></strong>
-                </li>
-            </template>
-            <template x-if="!responsedata">
-                <li>No dier found</li>
-            </template>
+        <ul id="animals_list">
         </ul>
     </div>
 </div>
