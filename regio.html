@@ -57,6 +57,7 @@
         async function getDataForDieren() {
             try {
                 // Fetch data for Dieren using regio_id
+                console.log("hello");
                 const dierenResponse = await fetch(`https://api-dierentuin-michielkuyken.cloud.okteto.net/dier/${regio_id}`);
                 console.log('Dieren API Response Status:', dierenResponse.status);
                 const dierenData = await dierenResponse.json();
