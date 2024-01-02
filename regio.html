@@ -55,28 +55,27 @@
             }
             
         });
+        async function getDataForDieren() {
+            try {
+                // Fetch data for Dieren using regio_id
+                const dierenResponse = await fetch(`https://api-dierentuin-michielkuyken.cloud.okteto.net/dier/${regio_id}`);
+                const dierenData = await dierenResponse.json();
 
+                // Get the <ul> element
+                const ulElement = document.getElementById('dieren_lijst');
+
+                // Clear existing content in the <ul> element
+                ulElement.innerHTML = '';
+
+                // Iterate over dierenData and append list items to the <ul> element
+                dierenData.forEach(dier => {
+                    const liElement = document.createElement('li');
+                    liElement.textContent = dier.diersoort;
+                    ulElement.appendChild(liElement);
+                });
     </script>
-    console.log(regio_id)
-    <div x-data="{
-        responsedata: null,
-        async getData(regio_id) {
-            this.responsedata = await (await fetch('https://api-dierentuin-michielkuyken.cloud.okteto.net/dier/${regio_id}')).json();
-            console.log(this.responsedata);
-        }
-    }" x-init="getData">
         <h2>Dieren</h2>
-        <ul>
-            <template x-for="dier in responsdata" :key="dier.id">
-                <li>
-                    <strong x-text="dier.diersoort"></strong>
-                </li>
-            </template>
-            <template x-if="!responsedata">
-                <li>No dier found</li>
-            </template>
-        </ul>
-    </div>
+        <ul id="dieren_lijst"></ul>
 </div>
 </body>
 </html>
