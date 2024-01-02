@@ -42,8 +42,8 @@
 
                 document.getElementById('voornaam').textContent = data.voornaam;
                 document.getElementById('achternaam').textContent = data.achternaam;
-                document.getElementById('manager_nummer').textContent = data.manager_nummer;
-                document.getElementsByClassName('foto').src = data.foto;
+                document.getElementsByClassName('manager_nummer').textContent = data.manager_nummer;
+                document.getElementsById('foto').src = data.foto;
             } catch (error) {
                 console.error('Error during initialization:', error);
             }
