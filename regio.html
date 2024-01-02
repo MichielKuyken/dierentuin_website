@@ -72,6 +72,8 @@
                     liElement.textContent = dier.diersoort;
                     ulElement.appendChild(liElement);
                 });
+            } catch (error) {
+                console.error('Error fetching Dieren data:', error);
             }
         }
     </script>
