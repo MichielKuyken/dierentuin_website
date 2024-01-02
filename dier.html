@@ -37,7 +37,7 @@
                 const urlParams = new URLSearchParams(window.location.search);
                 const diersoort = urlParams.get('diersoort');
 
-                const response = await fetch(`https://api-dierentuin-michielkuyken.cloud.okteto.net/managers/${diersoort}`);
+                const response = await fetch(`https://api-dierentuin-michielkuyken.cloud.okteto.net/dieren/${diersoort}`);
                 const data = await response.json();
 
                 document.getElementById('diersoort').textContent = data.diersoort;
