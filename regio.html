@@ -58,7 +58,9 @@
             try {
                 // Fetch data for Dieren using regio_id
                 const dierenResponse = await fetch(`https://api-dierentuin-michielkuyken.cloud.okteto.net/dier/${regio_id}`);
+                console.log('Dieren API Response Status:', dierenResponse.status);
                 const dierenData = await dierenResponse.json();
+                console.log('Fetched Dieren Data:', dierenData);
 
                 // Get the <ul> element
                 const ulElement = document.getElementById('dieren_lijst');
