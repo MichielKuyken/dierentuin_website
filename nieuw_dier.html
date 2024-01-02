@@ -36,9 +36,9 @@
         responsedata: null,
         diersoort: null,
         hoeveelheid: null,
-        regio_id: null
+        regio_id: null,
         async callmethod1() {
-            this.responsedata = await (await fetch('https://api-dierentuin-michielkuyken.cloud.okteto.net/managers/', 
+            this.responsedata = await (await fetch('https://api-dierentuin-michielkuyken.cloud.okteto.net/dieren/', 
             {
                 method: 'POST',
                 body: JSON.stringify({
