@@ -39,7 +39,7 @@
                 const regionaam = urlParams.get('manager_nummer');
 
                 // Fetch data for the specific regionaam from the API
-                const response = await fetch(`https://api-dierentuin-michielkuyken.cloud.okteto.net/regios/${manager_nummer}`);
+                const response = await fetch(`https://api-dierentuin-michielkuyken.cloud.okteto.net/manager/${manager_nummer}`);
                 const data = await response.json();
 
                 // Update the content of the page with the fetched data
