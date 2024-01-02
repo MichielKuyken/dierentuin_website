@@ -37,7 +37,7 @@
         diersoort: null,
         hoeveelheid: null,
         regio_id: null,
-        async callmethod1() {
+        async callmethod() {
             this.responsedata = await (await fetch('https://api-dierentuin-michielkuyken.cloud.okteto.net/dieren/', 
             {
                 method: 'POST',
@@ -59,7 +59,7 @@
         <p class="col-4">Aantal: <input type="text" x-model="hoeveelheid"></p>
         <p class="col-4">Regio id: <input type="text" x-model="regio_id"></p>
         </div>
-        <a href="managers.html"><button x-on:click="callmethod1">Submit manager</button></a>
+        <a href="dier_created.html"><button x-on:click="callmethod">Maak dier</button></a>
     </div>
 </div>
 </body>
