@@ -43,7 +43,7 @@
                 document.getElementById('voornaam').textContent = data.voornaam;
                 document.getElementById('achternaam').textContent = data.achternaam;
                 document.getElementById('manager_nummer').textContent = data.manager_nummer;
-                document.getElementById('foto').src = data.foto;
+                document.getElementsByClassName('foto').src = data.foto;
             } catch (error) {
                 console.error('Error during initialization:', error);
             }
@@ -51,16 +51,16 @@
         });
 
     </script>
-    <h1 id="manager_nummer"></h1>
+    <h1 class="manager_nummer"></h1>
     <div class="row">
         <div class="col">
             <img id="foto" alt="manager">
         </div>
         <div class="col">
            <h2>Gegevens: </h2>
-            <h4>Voornaam: <p id="voornaam"></p></h4>
-            <h4>Achternaam: <p id="achternaam"></p></h4>
-            <h4>Manager nummer: <p id="manager_nummer"></p></h4>
+            <h4>Voornaam: <strong id="voornaam"></strong></h4>
+            <h4>Achternaam: <strong id="achternaam"></strong></h4>
+            <h4>Manager nummer: <strong class="manager_nummer"></strong></h4>
         </div>
     </div>
 </div>
