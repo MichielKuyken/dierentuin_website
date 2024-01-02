@@ -34,6 +34,7 @@
     <h1 id="regioTitle"></h1>
     <img id="foto" alt="regio">
     <script>
+        let regio_id;
         document.addEventListener('DOMContentLoaded', async function () {
             try {
                 // Extract the regionaam parameter from the URL
@@ -47,6 +48,7 @@
                 // Update the content of the page with the fetched data
                 document.getElementById('regioTitle').textContent = data.regionaam;
                 document.getElementById('foto').src = data.foto;
+                regio_id = data.id;
                 document.getElementById('regio_id').textContent = data.id;
             } catch (error) {
                 console.error('Error during initialization:', error);
@@ -55,6 +57,7 @@
         });
 
     </script>
+    console.log(regio_id)
     <div x-data="{
         responsedata: null,
         async getData(regio_id) {
