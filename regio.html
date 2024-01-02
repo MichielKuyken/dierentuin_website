@@ -58,7 +58,7 @@
                 // Populate the <ul> element with animalsData
                 animalsData.forEach(animal => {
                     const liElement = document.createElement('li');
-                    liElement.textContent = `${animal.diersoort} - Hoeveelheid: ${animal.hoeveelheid}`;
+                    liElement.textContent = `Diersoort: ${animal.diersoort} - Hoeveelheid: ${animal.hoeveelheid}`;
                     ulElement.appendChild(liElement);
                 });
             } catch (error) {
