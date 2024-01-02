@@ -49,7 +49,6 @@
                 document.getElementById('regioTitle').textContent = data.regionaam;
                 document.getElementById('foto').src = data.foto;
                 regio_id = data.id;
-                document.getElementById('regio_id').textContent = data.id;
             } catch (error) {
                 console.error('Error during initialization:', error);
             }
@@ -73,6 +72,8 @@
                     liElement.textContent = dier.diersoort;
                     ulElement.appendChild(liElement);
                 });
+            }
+        }
     </script>
         <h2>Dieren</h2>
         <ul id="dieren_lijst"></ul>
