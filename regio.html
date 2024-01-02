@@ -31,8 +31,6 @@
   </div>
 </nav>
 <div class="container text-center">
-    <h1 id="regioTitle"></h1>
-    <img id="foto" alt="regio">
     <script>
         let regio_id;
         document.addEventListener('DOMContentLoaded', async function () {
@@ -70,10 +68,16 @@
         });
         
     </script>
-    <div>
-        <h2>Dieren</h2>
-        <ul id="animals_list">
-        </ul>
+    <h1 id="regioTitle"></h1>
+    <div class="row">
+        <div class="col-6">
+            <img id="foto" alt="regio">
+        </div>
+        <div class="col-6">
+            <h2>Dieren</h2>
+            <ul id="animals_list">
+            </ul>
+        </div>
     </div>
 </div>
 </body>
