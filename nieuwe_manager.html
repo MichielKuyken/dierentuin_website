@@ -38,7 +38,7 @@
         achternaam: null,
         manager_nummer: null,
         async callmethod() {
-            this.responsedata = await (await fetch('https://api-dierentuin-michielkuyken.cloud.okteto.net/managers/', 
+            this.responsedata = await (await fetch('http://127.0.0.1:8080/managers/', 
             {
                 method: 'POST',
                 body: JSON.stringify({

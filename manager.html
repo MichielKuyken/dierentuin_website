@@ -37,7 +37,7 @@
                 const urlParams = new URLSearchParams(window.location.search);
                 const manager_nummer = urlParams.get('manager_nummer');
 
-                const response = await fetch(`https://api-dierentuin-michielkuyken.cloud.okteto.net/managers/${manager_nummer}`);
+                const response = await fetch(`http://127.0.0.1:8080/managers/${manager_nummer}`);
                 const data = await response.json();
 
                 document.getElementById('voornaam').textContent = data.voornaam;

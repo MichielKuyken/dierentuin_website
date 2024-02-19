@@ -37,7 +37,7 @@
         regionaam: null,
         manager_id: null,
         async callmethod() {
-            this.responsedata = await (await fetch('https://api-dierentuin-michielkuyken.cloud.okteto.net/regios/', 
+            this.responsedata = await (await fetch('http://127.0.0.1:8080/regios/', 
             {
                 method: 'POST',
                 body: JSON.stringify({
